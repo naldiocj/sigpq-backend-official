@@ -1,0 +1,10 @@
+#create migration
+node ace make:migration users
+
+
+#create seed
+node ace make:migration "nome do modulo"_user
+
+
+#alter table
+node ace make:migration "nome da migration" --table "nome da migration existente"

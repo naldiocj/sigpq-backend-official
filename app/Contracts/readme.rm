@@ -1,0 +1,3 @@
+# criar evento (seleccionar : Load file in all environments)
+node ace make:prldfile events
+node ace make:listener LogEvento

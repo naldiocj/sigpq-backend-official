@@ -1,0 +1,59 @@
+Para executar o MySQL 5.7 no Docker e persistir os dados em sua máquina local, você pode usar o Docker Compose. Aqui está um guia passo a passo para ajudá-lo a configurar isso:
+
+Instale o Docker e o Docker Compose: Certifique-se de que você já instalou o Docker e o Docker Compose. Se ainda não o fez, siga as instruções oficiais para instalar:
+
+`Docker`
+Docker Compose
+Crie um diretório para seu projeto:
+
+bash
+Copy code
+"
+mkdir meu_projeto_mysql
+cd meu_projeto_mysql
+"
+Crie um arquivo docker-compose.yml: Dentro do diretório meu_projeto_mysql, crie um arquivo chamado docker-compose.yml usando seu editor de texto favorito, e adicione o seguinte conteúdo:
+
+"
+yaml
+Copy code
+version: '3'
+
+services:
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: minha_senha_secreta
+    volumes:
+      - ./data:/var/lib/mysql
+"
+
+MYSQL_ROOT_PASSWORD: É a senha do usuário root. Você pode mudar "minha_senha_secreta" para a senha que desejar.
+O mapeamento de volume ./data:/var/lib/mysql irá persistir os dados do MySQL no diretório data dentro de meu_projeto_mysql.
+Inicie o contêiner MySQL:
+
+bash
+Copy code
+docker-compose up -d
+Verifique se o contêiner está em execução:
+
+bash
+Copy code
+docker-compose ps
+Agora, o MySQL 5.7 está em execução no Docker e os dados estão sendo persistidos na pasta data do diretório meu_projeto_mysql.
+
+Conectar ao MySQL: Se você desejar se conectar ao MySQL, pode usar o cliente MySQL dentro de um contêiner Docker, por exemplo:
+
+bash
+Copy code
+docker exec -it meu_projeto_mysql_mysql_1 mysql -uroot -p
+Em seguida, insira a senha do root quando solicitado (no exemplo acima, é "minha_senha_secreta").
+
+Parando e removendo o contêiner:
+
+Se, em algum momento, você desejar parar o MySQL, pode simplesmente usar:
+
+bash
+Copy code
+docker-compose down
+Lembre-se de fazer backups regulares dos seus dados e de não usar senhas simples em ambientes de produção.

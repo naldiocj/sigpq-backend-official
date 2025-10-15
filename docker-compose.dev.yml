@@ -1,0 +1,70 @@
+version: '3.7'
+
+services:
+  mysql_piips:
+    container_name: "mysql_piips"
+    image: mysql
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: Pkdocker123    # Altere para sua senha desejada
+      MYSQL_DATABASE: piips               # Nome de um banco de dados a ser criado (opcional)
+      MYSQL_USER: docker                  # Nome de um usuário não-root (opcional)
+      MYSQL_PASSWORD: docker123           # Senha para o usuário não-root (opcional)
+    ports:
+      - "0.0.0.0:3306:3306"
+    volumes:
+      - ./database/docker_database/db:/var/lib/mysql
+    networks:
+      - piips
+
+  mongo_piips:
+    container_name: mongo_piips
+    image: mongo
+    restart: always
+    environment:
+      - MONGO_INITDB_DATABASE=Auditable
+    ports:
+      - "27017:27017"
+      - "27019:27019"
+    volumes:
+      - ./database/mongo_database:/data/db
+    networks:
+      - piips
+
+  # redis_piips:
+  #   container_name: redis_piips
+  #   image: redis:latest
+  #   ports:
+  #    - "6379:6379"
+  #   networks:
+  #     - piips
+
+  # queue_piips:
+  #   container_name: queue_piips
+  #   image: rabbitmq:3-management
+  #   restart: always
+  #   ports:
+  #    - "5672:5672"
+  #    - "15672:15672"
+  #   networks:
+  #     - piips
+
+# volumes:
+#   mysql_piips_data:
+#     driver: local
+#   mongo_piips_data:
+#     driver: local
+
+networks:
+  piips:
+    external: true
+
+# Criar a rede manualmente:
+# docker network create piips
+
+# Execute o Docker Compose:
+# docker-compose up -d
+
+# Quando quiser parar o serviço MySQL, execute:
+# docker-compose down

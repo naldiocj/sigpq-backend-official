@@ -1,0 +1,14 @@
+# Demostração de um crud básico
+
+const db = require('./database');
+  
+async function listar() {
+    return await db.from('users').where('id', 2).first()
+}
+
+async function main() {
+    console.log(await listar());
+}
+
+main();
+

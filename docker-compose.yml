@@ -1,0 +1,65 @@
+version: '3.7'
+
+services:
+  mysql:
+    image: mysql:8.0.33
+    container_name: mysql8033
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    privileged: true  # This grants the container all host privileges
+    environment:
+      MYSQL_ROOT_PASSWORD: rootDocker123 # Altere para sua senha desejada
+      MYSQL_DATABASE: piips               # Nome de um banco de dados a ser criado (opcional)
+      MYSQL_USER: docker                  # Nome de um usuário não-root (opcional)
+      MYSQL_PASSWORD: docker123           # Senha para o usuário não-root (opcional)
+    ports:
+      - "3306:3306"
+    expose:
+      # Opens port 3307 on the container
+      - '3306'
+    volumes:
+      - ./data/mysql8033:/var/lib/mysql
+ 
+  mongo_lotus:
+    container_name: mongo_lotus
+    image: mongo
+    restart: always
+    environment:
+      - MONGO_INITDB_DATABASE=Auditable
+    ports:
+      - "27017:27017"
+      - "27019:27019"
+    volumes:
+      - ./data/mongo:/var/lib/mysql
+
+  queue_lotus:
+      container_name: queue_lotus
+      # image: rabbitmq:management
+      image: rabbitmq:3-management
+      restart: always
+      ports:
+        - "5672:5672"   # Porta padrão do RabbitMQ
+        - "15672:15672" # Interface web de gerenciamento
+      environment:
+        - RABBITMQ_DEFAULT_USER=guest
+        - RABBITMQ_DEFAULT_PASS=guest
+      volumes:
+        - "./data/rabbitmq_data:/var/lib/rabbitmq"
+
+  redis_lotus: 
+      container_name: redis_lotus
+      image: redis:latest   # Especificando a versão 6.2, ajuste conforme sua necessidade
+      restart: always
+      # command: redis-server --requirepass yourpassword  # Definir senha para acesso
+      ports:
+       - "6379:6379"
+      volumes:
+        - ./data/redis:/data  # Corrigindo o caminho do volume
+
+# usadno docker compose.yml instalar mysql:57 mongo redis rabbitmq:3-managment
+
+# Execute o Docker Compose:
+# docker-compose up -d
+
+# Quando quiser parar o serviço MySQL, execute:
+# docker-compose down

@@ -1,0 +1,43 @@
+node ace make:model Modulo -c -m
+node ace make:model Pessoa -m
+node ace make:model User -c -m
+node ace make:model Pessoafisica -m
+node ace make:model TipoPessoajuridica -m  
+node ace make:model Pessoajuridica -m
+node ace make:model Pais -c -m
+node ace make:model Provincia -c -m
+node ace make:model Municipio -c -m
+node ace make:model EstadoCivil -m
+node ace make:model Mes -m
+
+node ace make:model SigpqTipoContacto -c -m 
+node ace make:model SigpqContacto -m
+node ace make:model SigpqTipoPessoajuridica -c -m
+node ace make:model SigpqPatente -m
+node ace make:model SigpqTipoAnexo -c -m
+node ace make:model SigpqAnexo -c -m
+node ace make:model SigpqTipoDocumento -c -m
+node ace make:model SigpqDocumento -m
+node ace make:model SigpqProvimento -m 
+node ace make:model SigpqTipoCargo -c -m
+node ace make:model SigpqCargo -c -m
+node ace make:model SigpqTipoCarreira -c -m
+node ace make:model SigpqCarreira -c -m
+node ace make:model SigpqTipoVinculo -c -m
+node ace make:model SigpqVinculo -c -m
+node ace make:model SigpqTipoRegime -c -m
+node ace make:model SigpqRegime -c -m
+node ace make:model SigpqTipoAusencia -c -m
+node ace make:model SigpqAusencia -c -m
+node ace make:model SigpqTipoFamiliar -c -m 
+node ace make:model SigpqFamiliar -m
+node ace make:model SigpqTipoHabilitacaoliteraria -c -m 
+node ace make:model SigpqHabilitacaoliteraria -c -m  
+node ace make:model SigpqFuncionario -m
+
+node ace make:model SigpqCandidato -c -m
+
+node ace make:seeder 010Modulo
+node ace make:seeder 011Permission
+node ace make:seeder 012Role
+node ace make:seeder 013User 

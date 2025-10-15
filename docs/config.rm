@@ -1,0 +1,19 @@
+# backend da piips
+cd /opt/projectos/piips/backend/ 
+pm2 start ecosystem.config.js
+
+# pna-sidi
+cd ~/opt/pna-sidi/
+pm2 start sidi-ecosystem.config.json
+
+# pna sgae
+cd ~/opt/pna_sgae/
+pm2 start ecosystem.config.json
+
+# Chat do portal
+cd ~/opt/PIPNA-NodeJS/portal-chat/
+pm2 start ecosystem.config.json
+
+# backend do portal interno
+cd ~/opt/PIPNA-NodeJS/portal-backend/backend/
+pm2 start ecosystem.config.json

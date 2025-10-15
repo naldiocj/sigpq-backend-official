@@ -1,0 +1,71 @@
+{
+  "extends": "adonis-preset-ts/tsconfig.json",
+  "include": [
+    "**/*",
+    "*.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.json",
+    "addons/**/*" // Inclui todos os arquivos sob 'addons/config'
+  ],
+  "exclude": [
+    "node_modules",
+    "build"
+  ],
+  "rules": {
+    "import/no-unresolved": "error"
+  },
+  "compilerOptions": {
+    // Inicio
+    "target": "ES2020",
+    "module": "commonjs",
+    "lib": [
+      "ES2020"
+    ],
+    "noUnusedLocals": true,
+    "incremental": true,
+    "noUnusedParameters": true,
+    "removeComments": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "strictNullChecks": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    // fim
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "outDir": "build",
+    "rootDir": "./",
+    "sourceMap": true,
+    "paths": {
+      "App/*": [
+        "./app/*"
+      ],
+      "Config/*": [
+        "./config/*"
+      ],
+      "Contracts/*": [
+        "./contracts/*"
+      ],
+      "Database/*": [
+        "./database/*"
+      ],
+      "Addons/*": [
+        "./addons/*"
+      ]
+    },
+    "types": [
+      "@adonisjs/core",
+      "@adonisjs/repl",
+      "@japa/preset-adonis/build/adonis-typings",
+      "@adonisjs/lucid",
+      "@adonisjs/auth",
+      "adonis5-jwt",
+      "@adonisjs/redis"
+      // "types/adonis.d.ts"
+      ,
+      "@rlanz/bull-queue"
+    ]
+  }
+}

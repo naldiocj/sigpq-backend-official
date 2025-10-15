@@ -1,0 +1,30 @@
+# para listar os comandos do backend
+node ace
+
+# arrancar o servidor
+node ace serve
+
+# arrancar o servidor no modo de desenvolvimento
+node ace serve -w
+node ace serve --watch
+
+# listar as rotas
+node ace list:routes
+
+#Base de dados
+
+    #Eliminar a base de dados
+    node ace db:wipe
+
+    #Eliminar a base de dados e criar novamente todas as tabelas com os seu registos padrão
+    node ace migration:fresh --seed
+
+    #actualizar as tabelas já criadas com os seu registos padrão
+    node ace migration:refresh --seed
+
+    #Adicionar tabelas ou campos não criadas
+    node ace migration:run
+    
+    node ace db:seed
+
+    node ace db:seed --files "./database/seeders/modulo_sigt_01_marca.ts"

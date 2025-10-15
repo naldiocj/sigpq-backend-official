@@ -1,0 +1,9 @@
+
+#https://www.npmjs.com/package/uuid
+npm i uuid
+
+#ACL
+Link: https://socket.dev/npm/package/@shagital/adonisjs-acl
+Link: https://masteringbackend.com/posts/adonisjs-tutorial-the-ultimate-guide
+npm install @shagital/adonisjs-acl
+node ace configure @shagital/adonisjs-acl

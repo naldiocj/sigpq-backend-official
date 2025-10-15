@@ -1,0 +1,6 @@
+{ 
+  "name" : "megsapp-sim-card-process", 
+  "cwd" : "./", 
+  "script" : "node ace", 
+  "args" : "scheduler:run"
+}

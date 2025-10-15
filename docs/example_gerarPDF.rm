@@ -1,0 +1,15 @@
+
+
+- Como chamar a função para gerar pdf no modulo de backend com
+
+----------------------------------------------------------------
+await gerarLogs({
+      request,
+      response,
+      auth,
+      tipoOperacao: 'REGISTOU',
+      valorNovo: result,
+      modulo: 'SIGV',
+      descricao: 'registo descrição  do produto'
+    })
+----------------------------------------------------------------

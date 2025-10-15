@@ -1,0 +1,60 @@
+{
+  "typescript": true,
+  "commands": [
+    "./commands",
+    "@adonisjs/core/build/commands/index.js",
+    "@adonisjs/repl/build/commands",
+    "@adonisjs/lucid/build/commands",
+    "@rlanz/bull-queue/build/commands"
+  ],
+  "exceptionHandlerNamespace": "App/Exceptions/Handler",
+  "aliases": {
+    "App": "app",
+    "Config": "config",
+    "Database": "database",
+    "Contracts": "contracts"
+  },
+  "preloads": [
+    "./start/routes",
+    "./start/kernel",
+    "./start/events",
+    "./start/logs"
+  ],
+  "providers": [
+    "./providers/AppProvider",
+    "@adonisjs/core",
+    "@adonisjs/lucid",
+    "@adonisjs/auth",
+    "adonis5-jwt",
+    "@adonisjs/redis",
+    "@rlanz/bull-queue",
+    "./providers/HttpServiceProvider",
+    "./providers/TokenInterceptorProvider"
+  ],
+  "aceProviders": ["@adonisjs/repl"],
+  "tests": {
+    "suites": [
+      {
+        "name": "Geral",
+        "files": ["tests/**/*.spec(.ts|.js)"],
+        "timeout": 60000
+      },
+      {
+        "name": "Entidades",
+        "files": ["tests/entity/**/*.spec(.ts|.js)"],
+        "timeout": 60000
+      },
+      {
+        "name": "repositories-webservice",
+        "files": ["tests/repositories-webservice/**/*.spec(.ts|.js)"],
+        "timeout": 60000
+      },
+      {
+        "name": "config",
+        "files": ["tests/config/**/*.spec(.ts|.js)"],
+        "timeout": 60000
+      }
+    ]
+  },
+  "testProviders": ["@japa/preset-adonis/TestsProvider"]
+}

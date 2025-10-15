@@ -1,0 +1,12 @@
+sudo lsof -i :3333
+sudo kill -9 1234
+Or
+sudo kill -9 $(lsof -ti :3333)
+
+### Data de criação
+08 de Outubro de 2022 
+
+### Última actualização
+Em desenvolvimento
+
+Autor: Pedro Kondo (https://github.com/PedroEJKondo)

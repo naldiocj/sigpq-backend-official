@@ -1,0 +1,77 @@
+// // CommonJS
+const path = require('path');
+const dotenv = require('dotenv');
+
+// // Define o caminho específico do seu arquivo .env
+const envPath = path.join(__dirname, './../../.env');
+
+// // Carrega as variáveis de ambiente do arquivo .env
+dotenv.config({ path: envPath });
+
+const {
+    XSOURCEFONT,
+    NODE_ENV,
+    PORT,
+    HOST,
+    APP_KEY,
+    DRIVE_DISK,
+    DB_CONNECTION,
+    MYSQL_HOST,
+    MYSQL_PORT,
+    MYSQL_USER,
+    MYSQL_PASSWORD,
+    MYSQL_DB_NAME,
+    JWT_PRIVATE_KEY,
+    JWT_PUBLIC_KEY,
+    SALT
+} = process.env;
+
+const filtrarEnv = {
+    XSOURCEFONT,
+    NODE_ENV,
+    PORT,
+    HOST,
+    APP_KEY,
+    DRIVE_DISK,
+    DB_CONNECTION,
+    MYSQL_HOST,
+    MYSQL_PORT,
+    MYSQL_USER,
+    MYSQL_PASSWORD,
+    MYSQL_DB_NAME,
+    JWT_PRIVATE_KEY,
+    JWT_PUBLIC_KEY,
+    SALT
+};
+
+const CONEXAO = {
+    mysql2: {
+        client: 'mysql2',
+        connection: {
+            host: filtrarEnv.MYSQL_HOST,
+            port: filtrarEnv.MYSQL_PORT,
+            user: filtrarEnv.MYSQL_USER,
+            password: filtrarEnv.MYSQL_PASSWORD,
+            database: filtrarEnv.MYSQL_DB_NAME
+        }
+    },
+    mongo: {
+        // normal: {
+        // type: "mongodb",
+        // host: "mongo",
+        // port: 27017,
+        // username: "root",
+        // password: "root",
+        // database: "fullcycle",
+        // authSource: "admin",
+        // synchronize: true,
+        // logging: false,
+        // entities: [CategoryMongoDB],
+        // subscribers: [],
+        // migrations: [],
+    }
+}
+ 
+const db = require('knex')(CONEXAO.mysql2);
+module.exports = db;
+

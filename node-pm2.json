@@ -1,0 +1,20 @@
+{
+  "script": "node",
+  "name": "node",
+  "filter_env": [],
+  "args": ["serve", "--host=127.0.0.1", "--port=3334"],
+  "namespace": "default",
+  "env": {},
+  "merge_logs": true,
+  "vizion": true,
+  "autorestart": true,
+  "watch": false,
+  "instance_var": "NODE_APP_INSTANCE",
+  "pmx": true,
+  "automation": true,
+  "treekill": true,
+  "username": "pedrokondo",
+  "windowsHide": true,
+  "kill_retry_time": 100,
+  "write": true
+}

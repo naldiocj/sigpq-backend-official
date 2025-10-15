@@ -1,0 +1,50 @@
+# Node modules
+node_modules
+
+relatorio-de-licencas.pdf
+
+relatorio-de-licencas
+
+build
+coverage
+.vscode
+.DS_STORE
+
+# .env
+# .env.testing
+# .env.production
+output.pdf
+
+# Adonis directory for storing tmp files
+tmp
+
+ideia
+
+database/seeders/modulo_*.ts
+database/migrations/*_modulo_*.ts
+
+# # Exceção para a pasta config
+addons/*
+# The development sqlite file
+!addons/config/
+
+public/addons/**/*.ts
+public/storage
+# addons/**/*.md
+
+app/@piips/files/*
+app/@piips/files*
+
+database/docker_database/*
+database/mongo_database/*
+app/Backup
+
+
+.env.local
+.env.test
+
+.idea 
+.vscode 
+
+output
+

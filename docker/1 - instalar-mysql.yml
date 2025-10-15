@@ -1,0 +1,101 @@
+É importante ler todo o conteudo:
+
+para instalar o MySQL 5.7. Aqui está um exemplo simples:
+
+1.Crie um arquivo chamado docker-compose.yml:
+2.Abra este arquivo em seu editor de texto favorito e insira o seguinte conteúdo:
+
+`````````````````````
+version: '3.7'
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql57
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password  # Altere para sua senha desejada
+      MYSQL_DATABASE: mydatabase          # Nome de um banco de dados a ser criado (opcional)
+      MYSQL_USER: user                    # Nome de um usuário não-root (opcional)
+      MYSQL_PASSWORD: user_password       # Senha para o usuário não-root (opcional)
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+volumes:
+  mysql-data:
+`````````````````````
+
+#Dar permissão de tudo no user docker
+GRANT ALL PRIVILEGES ON *.* TO 'docker'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+#Inicie o serviço MySQL usando o seguinte comando:
+docker-compose up -d
+
+#Com este arquivo docker-compose.yml, você está fazendo o seguinte:
+
+Executando um serviço chamado "mysql" usando a imagem mysql:5.7.
+Definindo algumas variáveis de ambiente para configuração inicial, como senha root, um nome de banco de dados, um nome de usuário e uma senha para esse usuário.
+Mapeando a porta 3306 do contêiner para a porta 3306 da sua máquina local.
+Criando um volume chamado "mysql-data" para persistir os dados do MySQL, para que você não perca seus dados quando o contêiner for parado ou removido.
+Lembre-se de substituir root_password, mydatabase, user e user_password pelos valores que desejar.
+
+
+
+#Para linux
+#Instalar Mysql workbench community
+sudo snap install mysql-workbench-community
+
+#connectores do mysql-workbench-community
+sudo snap connect mysql-workbench-community:password-manager-service :password-manager-service
+
+A diferença entre ports e expose em um arquivo Docker Compose refere-se ao modo como as portas do contêiner são tratadas em relação à máquina hospedeira.
+
+ports:
+
+Isso mapeia a porta do contêiner para a porta do host.
+Por exemplo, ports: - "3306:3306" significa que a porta 3306 no contêiner será mapeada e acessível pela porta 3306 na máquina hospedeira.
+Quando você configura dessa maneira, pode acessar o serviço diretamente de qualquer aplicativo em sua máquina hospedeira (ou até de outras máquinas, dependendo da configuração da rede).
+expose:
+
+Isto informa ao Docker que o contêiner está ouvindo na porta especificada durante a execução, mas sem publicá-la para a máquina hospedeira.
+O principal uso do expose é para fins de documentação e quando você deseja conectar contêineres entre si através de uma rede Docker interna.
+Outros contêineres na mesma rede podem acessar um contêiner exposto, mas a máquina hospedeira (e qualquer coisa fora da rede Docker) não pode.
+Em muitos casos, para aplicações como MySQL, as pessoas geralmente usam ports porque querem que o serviço seja acessível a partir da máquina hospedeira. No entanto, se você estiver criando uma configuração onde apenas outros contêineres precisam acessar o MySQL (e não qualquer aplicativo fora do Docker), então você poderia usar expose.
+
+Resumo:
+Se você estiver tentando conectar-se ao MySQL de um aplicativo na sua máquina local ou de outra máquina na mesma rede, use ports. Se você estiver apenas tentando conectar-se ao MySQL de outro contêiner no mesmo Docker Compose ou na mesma rede Docker, então você pode usar expose.
+
+#------------------------------------------------------------------------------------------------
+
+É possível usar ports e expose juntos em um arquivo docker-compose.yml. No entanto, é importante entender o propósito e o efeito de cada um para garantir que você esteja usando-os de forma adequada e eficaz.
+
+expose:
+expose apenas informa ao Docker que o contêiner está ouvindo em uma porta específica durante a execução. Isso não faz nada no host por si só.
+Pode ser usado principalmente para fins de documentação ou quando os contêineres precisam se comunicar entre si através da rede Docker interna.
+
+ports:
+ports mapeia as portas do contêiner para as portas do host, tornando o serviço no contêiner acessível fora do contêiner.
+Se você está expondo uma porta usando ports, você tecnicamente não precisa do expose para essa mesma porta, já que a porta já estará acessível devido ao mapeamento ports.
+
+exemplo:
+
+services:
+  webapp:
+    image: my-web-app
+    expose:
+      - "3000"
+    ports:
+      - "8080:3000"
+      
+Neste exemplo:
+
+A aplicação web dentro do contêiner está ouvindo na porta 3000.
+Usamos expose para documentar que o contêiner está ouvindo na porta 3000.
+Usamos ports para mapear a porta 3000 do contêiner para a porta 8080 do host.
+Dessa forma, a aplicação web seria acessível no host na porta 8080.
+
+Em resumo: enquanto é possível usar ambos ports e expose juntos, o uso de ports por si só é geralmente suficiente para a maioria dos casos práticos. A diretiva expose é mais útil em situações onde você quer apenas documentar as portas que um contêiner está ouvindo ou quando você está trabalhando com redes Docker personalizadas.

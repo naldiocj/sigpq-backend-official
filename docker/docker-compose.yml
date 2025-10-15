@@ -1,0 +1,25 @@
+
+version: '3.7'
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql-versao-5.7
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Pkdocker123    # Altere para sua senha desejada
+      MYSQL_DATABASE: piips               # Nome de um banco de dados a ser criado (opcional)
+      MYSQL_USER: docker                  # Nome de um usuário não-root (opcional)
+      MYSQL_PASSWORD: docker123           # Senha para o usuário não-root (opcional)
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./../app/Backup/docker-backup:/var/lib/mysql
+ 
+
+# Execute o Docker Compose:
+# docker-compose up -d
+
+# Quando quiser parar o serviço MySQL, execute:
+# docker-compose down
