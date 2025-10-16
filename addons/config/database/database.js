@@ -1,8 +1,8 @@
-const {filtrarEnv} = require('./config');
-  
+const { filtrarEnv } = require('./config');
+
 const CONEXAO = {
     mysql2: {
-        client: 'mysql2',
+        client: 'mysql',
         connection: {
             host: filtrarEnv.MYSQL_HOST,
             port: filtrarEnv.MYSQL_PORT,

@@ -1,14 +1,5 @@
 {
   "commands": {
-    "minio:test": {
-      "settings": {},
-      "commandPath": "./commands/MinioTest",
-      "commandName": "minio:test",
-      "description": "Testa a conexão com o MinIO",
-      "args": [],
-      "aliases": [],
-      "flags": []
-    },
     "run:migrations_from_sigpq": {
       "settings": {
         "loadApp": false,

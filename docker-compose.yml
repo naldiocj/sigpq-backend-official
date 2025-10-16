@@ -8,10 +8,10 @@ services:
     restart: always
     privileged: true  # This grants the container all host privileges
     environment:
-      MYSQL_ROOT_PASSWORD: rootDocker123 # Altere para sua senha desejada
-      MYSQL_DATABASE: piips               # Nome de um banco de dados a ser criado (opcional)
-      MYSQL_USER: docker                  # Nome de um usuário não-root (opcional)
-      MYSQL_PASSWORD: docker123           # Senha para o usuário não-root (opcional)
+      MYSQL_ROOT_PASSWORD: admin # Altere para sua senha desejada
+      MYSQL_DATABASE: sic   # Nome de um banco de dados a ser criado (opcional)
+      MYSQL_USER: sigpq     # Nome de um usuário não-root (opcional)
+      MYSQL_PASSWORD: admin           # Senha para o usuário não-root (opcional)
     ports:
       - "3306:3306"
     expose:
@@ -20,8 +20,8 @@ services:
     volumes:
       - ./data/mysql8033:/var/lib/mysql
  
-  mongo_lotus:
-    container_name: mongo_lotus
+  mongodb:
+    container_name: mongodb
     image: mongo
     restart: always
     environment:
@@ -30,24 +30,24 @@ services:
       - "27017:27017"
       - "27019:27019"
     volumes:
-      - ./data/mongo:/var/lib/mysql
+      - ./data/mongo:/var/lib/mongo
 
-  queue_lotus:
-      container_name: queue_lotus
-      # image: rabbitmq:management
-      image: rabbitmq:3-management
-      restart: always
-      ports:
-        - "5672:5672"   # Porta padrão do RabbitMQ
-        - "15672:15672" # Interface web de gerenciamento
-      environment:
-        - RABBITMQ_DEFAULT_USER=guest
-        - RABBITMQ_DEFAULT_PASS=guest
-      volumes:
-        - "./data/rabbitmq_data:/var/lib/rabbitmq"
+  # queue_lotus:
+  #     container_name: queue_lotus
+  #     # image: rabbitmq:management
+  #     image: rabbitmq:3-management
+  #     restart: always
+  #     ports:
+  #       - "5672:5672"   # Porta padrão do RabbitMQ
+  #       - "15672:15672" # Interface web de gerenciamento
+  #     environment:
+  #       - RABBITMQ_DEFAULT_USER=guest
+  #       - RABBITMQ_DEFAULT_PASS=guest
+  #     volumes:
+  #       - "./data/rabbitmq_data:/var/lib/rabbitmq"
 
-  redis_lotus: 
-      container_name: redis_lotus
+  redisdb: 
+      container_name: redisdb
       image: redis:latest   # Especificando a versão 6.2, ajuste conforme sua necessidade
       restart: always
       # command: redis-server --requirepass yourpassword  # Definir senha para acesso

@@ -31,30 +31,42 @@
     "./providers/HttpServiceProvider",
     "./providers/TokenInterceptorProvider"
   ],
-  "aceProviders": ["@adonisjs/repl"],
+  "aceProviders": [
+    "@adonisjs/repl"
+  ],
   "tests": {
     "suites": [
       {
         "name": "Geral",
-        "files": ["tests/**/*.spec(.ts|.js)"],
+        "files": [
+          "tests/**/*.spec(.ts|.js)"
+        ],
         "timeout": 60000
       },
       {
         "name": "Entidades",
-        "files": ["tests/entity/**/*.spec(.ts|.js)"],
+        "files": [
+          "tests/entity/**/*.spec(.ts|.js)"
+        ],
         "timeout": 60000
       },
       {
         "name": "repositories-webservice",
-        "files": ["tests/repositories-webservice/**/*.spec(.ts|.js)"],
+        "files": [
+          "tests/repositories-webservice/**/*.spec(.ts|.js)"
+        ],
         "timeout": 60000
       },
       {
         "name": "config",
-        "files": ["tests/config/**/*.spec(.ts|.js)"],
+        "files": [
+          "tests/config/**/*.spec(.ts|.js)"
+        ],
         "timeout": 60000
       }
     ]
   },
-  "testProviders": ["@japa/preset-adonis/TestsProvider"]
+  "testProviders": [
+    "@japa/preset-adonis/TestsProvider"
+  ]
 }
