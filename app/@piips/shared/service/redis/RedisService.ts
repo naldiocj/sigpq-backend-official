@@ -115,4 +115,4 @@ export default class RedisService {
 /* const acess = await this.redis.getMoreAcessKeys('funcionario', orgao.id, 3);
   console.log(acess) */
 //console.log(JSON.parse((await this.redis.retrieveHashField('search:funcionario:orgao:346:hash:110bad8581aab3177e5dbc879d1e94b8','filters'))??'{}'))
-//this.redis.deleteAllData();
+// this.redis.deleteAllData();

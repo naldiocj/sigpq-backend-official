@@ -12,6 +12,10 @@ export default redisConfig({
       keyPrefix: "",
       // Pool configuration options
       connectionName: "redis",
+      // clusterOptions: {
+      //   scaleReads: 'slave',
+      //   slotsRefreshTimeout: 10 * 1000,
+      // },
       pool: {
         max: 20000, // Aumentado para suportar mais conexões simultâneas
         min: 500, // Mantém um pool maior de conexões prontas
