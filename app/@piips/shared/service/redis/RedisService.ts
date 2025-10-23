@@ -7,7 +7,15 @@ export default class RedisService {
     return await Redis.hget(key, field)
   }
 
+  async retrieveHashField$(key, field) {
+    return await Redis.hget(key, field)
+  }
+
   async storeHashField(key, field, value) {
+    return await Redis.hset(key, field, value)
+  }
+
+    async storeHashField$(key, field, value) {
     return await Redis.hset(key, field, value)
   }
 
@@ -77,6 +85,14 @@ export default class RedisService {
 
   async obterResultadoDoRedis(keyStorage: string) {
     const result = JSON.parse(await this.retrieveHashField(keyStorage, 'results') ?? '');
+    if (Object.keys(result).length === 0 && result.constructor === Object) {
+      this.deleteUnlink(keyStorage)
+    }
+    return result;
+  }
+
+  async obterResultadoDoRedis$(keyStorage: string) {
+    const result = JSON.parse(await this.retrieveHashField$(keyStorage, 'results') ?? '');
     if (Object.keys(result).length === 0 && result.constructor === Object) {
       this.deleteUnlink(keyStorage)
     }
