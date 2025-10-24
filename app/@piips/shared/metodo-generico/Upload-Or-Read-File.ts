@@ -12,6 +12,9 @@ export async function uploadFile(
   filePathAux: string,
   file: any
 ): Promise<string | null> {
+
+  console.log('Upload file called with : ', filePathAux, file.extname);
+
   try {
     var nameFile = `${gerarUnicoNumeroParaFicheiro()}.${file.extname}`;
     const filePath = `${baseUrlFile}/${filePathAux}`;

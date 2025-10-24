@@ -96,6 +96,7 @@ export default class RedisService {
     if (Object.keys(result).length === 0 && result.constructor === Object) {
       this.deleteUnlink(keyStorage)
     }
+    
     return result;
   }
 
