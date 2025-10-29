@@ -13,10 +13,10 @@ export async function uploadFile(
   file: any
 ): Promise<string | null> {
 
-  console.log('Upload file called with : ', filePathAux, file.extname);
+  const ext = path.extname(file.originalName).toLowerCase();
 
   try {
-    var nameFile = `${gerarUnicoNumeroParaFicheiro()}.${file.extname}`;
+    var nameFile = `${gerarUnicoNumeroParaFicheiro()}.${ext}`;
     const filePath = `${baseUrlFile}/${filePathAux}`;
 
     await file.move(filePath, { name: nameFile });
