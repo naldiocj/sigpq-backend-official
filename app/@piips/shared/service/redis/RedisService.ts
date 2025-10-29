@@ -68,7 +68,7 @@ export default class RedisService {
     }
     const result = await this.obterResultadoDoRedis(keyStorage);
     await this.incrementAcesstoKey(`search:${name}:orgao:${key}:access_count`, keyStorage); //aumenta as vezes de acesso
-    await this.setExpiration(keyStorage, 604800); // renova o tempo de expiração
+    await this.setExpiration(keyStorage, 4); // renova o tempo de expiração
     return result;
   }
 
@@ -79,7 +79,7 @@ export default class RedisService {
     dados = await repository.listarTodos(options_aux)
     this.storeHashField(keyStorage, 'results', JSON.stringify(dados))
     this.storeHashField(keyStorage, 'filters', JSON.stringify(options_aux))
-    this.setExpiration(keyStorage, 604800) // expira em 1 semana
+    this.setExpiration(keyStorage, 4) // expira em 1 semana
     // ]);
   }
 
