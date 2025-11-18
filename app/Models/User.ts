@@ -40,6 +40,23 @@ export default class User extends BaseModel {
   public eliminado: boolean
 
   @column()
+  public aceder_painel_piips: boolean | number
+
+
+  @column()
+  public aceder_todos_agentes: boolean | number
+
+
+  @column()
+  public aceder_departamento: boolean | number
+
+  @column()
+  public aceder_seccao: boolean | number
+
+  @column()
+  public aceder_posto_policial: boolean | number
+
+  @column()
   public is_revoked: number
 
   // @column()
