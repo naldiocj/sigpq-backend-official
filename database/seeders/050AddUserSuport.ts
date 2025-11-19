@@ -59,8 +59,13 @@ export default class extends BaseSeeder {
 
     if (!existingUser) {
       const user = await User.create({
-        username: name, 
+        username: name,
         email: email,
+        aceder_painel_piips: role.name === "admin" ? 1 : 0,
+        aceder_todos_agentes: role.name === "admin" ? 1 : 0,
+        aceder_departamento: role.name === "admin" ? 1 : 0,
+        aceder_seccao: role.name === "admin" ? 1 : 0,
+        aceder_posto_policial: role.name === "admin" ? 1 : 0,
         password: "12345678",
         pessoa_id: pessoa.id,
         user_id: 2, // Manter o FK user_id original (se for para uma auditoria ou user criador)
@@ -140,7 +145,12 @@ export default class extends BaseSeeder {
       return;
     }
 
-    await this.createRHUser(role, "Naldio Joaquim", 112, "naldio.joaquim@sic.gov.ao", "-");
-
+    await this.createRHUser(
+      role,
+      "Naldio Joaquim",
+      112,
+      "naldio.joaquim@sic.gov.ao",
+      "-"
+    );
   }
 }
