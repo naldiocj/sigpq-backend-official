@@ -7,6 +7,10 @@ Route.get("/", async () => {
 });
 
 v1(Route);
+
+
+
+
 Route.get("/metrics", async (ctx) => {
   return new HttpMetrics().metrics(ctx);
 });

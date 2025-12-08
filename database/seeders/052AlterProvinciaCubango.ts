@@ -1,14 +1,21 @@
-import BaseSeeder from '@ioc:Adonis/Lucid/Seeder'
-import Database from '@ioc:Adonis/Lucid/Database'
+import BaseSeeder from "@ioc:Adonis/Lucid/Seeder";
+import Database from "@ioc:Adonis/Lucid/Database";
 
 export default class extends BaseSeeder {
   public async run() {
-    await Database
-      .from('provincias') // Substitua 'provincias' pelo nome real da sua tabela
-      .where('id', 5)
-      .update({ 
-        nome: 'Cubango',
-        updated_at: new Date(), // É boa prática atualizar o timestamp de 'updated_at'
+    const existProvincia = await Database.from("provincias")
+      .where({
+        id: 5,
       })
+      .first();
+
+    if (!existProvincia) {
+      await Database.from("provincias") 
+        .where("id", 5)
+        .update({
+          nome: "Cubango",
+          updated_at: new Date(),
+        });
+    }
   }
 }

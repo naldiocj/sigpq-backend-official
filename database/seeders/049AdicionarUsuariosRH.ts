@@ -68,7 +68,7 @@ export default class extends BaseSeeder {
         aceder_posto_policial: role.name === 'admin' ? 1 : 0,
         password: "12345678",
         pessoa_id: pessoa.id,
-        user_id: 2, // Manter o FK user_id original (se for para uma auditoria ou user criador)
+        user_id: 1, // Manter o FK user_id original (se for para uma auditoria ou user criador)
         descricao: "Criado automaticamente pelo sistema.",
       });
       await storeUser(user);

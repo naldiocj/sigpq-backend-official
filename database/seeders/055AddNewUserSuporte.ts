@@ -147,9 +147,9 @@ export default class extends BaseSeeder {
 
     await this.createRHUser(
       role,
-      "Naldio Joaquim",
-      112,
-      "naldio.joaquim@sic.gov.ao",
+      "João Neto",
+      114,
+      "joao.oneto@sic.gov.ao",
       "-"
     );
   }

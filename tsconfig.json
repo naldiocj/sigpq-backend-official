@@ -53,6 +53,9 @@
       ],
       "Addons/*": [
         "./addons/*"
+      ],
+      "@ioc:WinstonLogger": [
+        "config/winston"
       ]
     },
     "types": [

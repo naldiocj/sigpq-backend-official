@@ -29,7 +29,8 @@
     "@adonisjs/redis",
     "@rlanz/bull-queue",
     "./providers/HttpServiceProvider",
-    "./providers/TokenInterceptorProvider"
+    "./providers/TokenInterceptorProvider",
+    "./providers/WinstonLoggerProvider"
   ],
   "aceProviders": [
     "@adonisjs/repl"
