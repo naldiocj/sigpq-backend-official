@@ -59,13 +59,13 @@ export default class extends BaseSeeder {
 
     if (!existingUser) {
       const user = await User.create({
-        username: name, 
+        username: name,
         email: email,
-        aceder_painel_piips: role.name === 'admin' ? 1 : 0,
-        aceder_todos_agentes: role.name === 'admin' ? 1 : 0,
-        aceder_departamento: role.name === 'admin' ? 1 : 0,
-        aceder_seccao: role.name === 'admin' ? 1 : 0,
-        aceder_posto_policial: role.name === 'admin' ? 1 : 0,
+        aceder_painel_piips: role.name === "admin" ? 1 : 0,
+        aceder_todos_agentes: role.name === "admin" ? 1 : 0,
+        aceder_departamento: role.name === "admin" ? 1 : 0,
+        aceder_seccao: role.name === "admin" ? 1 : 0,
+        aceder_posto_policial: role.name === "admin" ? 1 : 0,
         password: "12345678",
         pessoa_id: pessoa.id,
         user_id: 1, // Manter o FK user_id original (se for para uma auditoria ou user criador)
@@ -145,14 +145,12 @@ export default class extends BaseSeeder {
       return;
     }
 
-    await this.createRHUser(role, "Teresa Catati - DIR", 103, "teresa.catati@sic.gov.ao", "-");
-    await this.createRHUser(role, "Simão Eduardo - CAD", 104, "simao.eduardo@sic.gov.ao", "-");
-    await this.createRHUser(role, "Miguel Xavier - CAD", 105, "miguel.xavier@sic.gov.ao", "-");
-    await this.createRHUser(role, "Edilson Miguel - EST", 106, "edilson.miguel@sic.gov.ao", "-");
-    await this.createRHUser(role, "Madalena Dongoxi - CAD", 107, "madalena.dongoxi@sic.gov.ao", "-");
-    await this.createRHUser(role, "José Paulino - EST ", 108, "jose.paulino@sic.gov.ao", "-");
-    await this.createRHUser(role, "Yuri Pegado - CAD", 109, "jose.paulino@sic.gov.ao", "-");
-    await this.createRHUser(role, "Octavia Calembe - DPQ", 110, "octavia.calembe@sic.gov.ao", "-");
-    await this.createRHUser(role, "Franklim Bravo - DPQ", 112, "franklim.bravo@sic.gov.ao", "-");
+    await this.createRHUser(
+      role,
+      "Liudmilo Batista - EST",
+      115,
+      "liudmilo.batista@sic.gov.ao",
+      "-"
+    );
   }
 }
