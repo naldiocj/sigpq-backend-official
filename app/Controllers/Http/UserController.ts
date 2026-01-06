@@ -1,5 +1,7 @@
 import type { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
 import UserRepository from "App/Repositories/UserRepository";
+import { getLogFormated } from "Config/constants";
+import Logger from "Config/winston";
 
 export default class UserController {
   #userRepo: any;
@@ -39,6 +41,17 @@ export default class UserController {
     input.user_id = auth.user?.id;
 
     const user = await this.#userRepo.store(input);
+
+    const userLogged = auth?.user;
+    const clientIp = request.ip();
+
+    Logger.info(
+      getLogFormated(userLogged, "utilizador registou com sucesso", "sistema"),
+      {
+        user_id: userLogged?.id,
+        ip: clientIp,
+      }
+    );
 
     return response.ok({
       message: "Sucesso ao registar!",
