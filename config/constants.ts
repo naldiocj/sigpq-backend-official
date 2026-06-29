@@ -1,6 +1,6 @@
 export const getLogFormated = (user: any,  endpoint: string, resource: string,) =>
   `O utilizador  ${
-    user.username
+    user?.username
   } acessou ${endpoint} ${resource} no dia ${new Date().toLocaleString(
     "pt-BR",
     {

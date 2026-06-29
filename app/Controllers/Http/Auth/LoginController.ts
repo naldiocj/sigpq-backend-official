@@ -37,7 +37,7 @@ export default class LoginController {
           "sistema"
         ),
         {
-          user_id: user.id,
+          user_id: user?.id,
           ip: clientIp,
         }
       );
@@ -63,7 +63,7 @@ export default class LoginController {
       Logger.info(
         getLogFormated(user, "utilizador logou com sucesso", "sistema"),
         {
-          user_id: user.id,
+          user_id: user?.id,
           ip: clientIp,
         }
       );
@@ -99,7 +99,7 @@ export default class LoginController {
     Logger.info(
       getLogFormated(user, "utilizador saiu com sucesso", "sistema"),
       {
-        user_id: user.id,
+        user_id: user?.id,
         ip: clientIp,
       }
     );
