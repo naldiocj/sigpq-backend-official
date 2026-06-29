@@ -10,7 +10,8 @@
   ],
   "exclude": [
     "node_modules",
-    "build"
+    "build",
+    "data"
   ],
   "rules": {
     "import/no-unresolved": "error"
