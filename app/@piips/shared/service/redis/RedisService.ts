@@ -84,7 +84,9 @@ export default class RedisService {
   }
 
   async obterResultadoDoRedis(keyStorage: string) {
-    const result = JSON.parse(await this.retrieveHashField(keyStorage, 'results') ?? '');
+    const raw = await this.retrieveHashField(keyStorage, 'results');
+    if (!raw) return null;
+    const result = JSON.parse(raw);
     if (Object.keys(result).length === 0 && result.constructor === Object) {
       this.deleteUnlink(keyStorage)
     }
@@ -92,7 +94,9 @@ export default class RedisService {
   }
 
   async obterResultadoDoRedis$(keyStorage: string) {
-    const result = JSON.parse(await this.retrieveHashField$(keyStorage, 'results') ?? '');
+    const raw = await this.retrieveHashField$(keyStorage, 'results');
+    if (!raw) return null;
+    const result = JSON.parse(raw);
     if (Object.keys(result).length === 0 && result.constructor === Object) {
       this.deleteUnlink(keyStorage)
     }
