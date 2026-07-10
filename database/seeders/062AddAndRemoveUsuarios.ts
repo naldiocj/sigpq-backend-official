@@ -204,6 +204,6 @@ export default class extends BaseSeeder {
       );
     }
 
-    console.log("Seed modulo_sigpq_74_gerir_usuarios_sic concluído com sucesso.");
+    console.log("Seed concluído com sucesso.");
   }
 }
