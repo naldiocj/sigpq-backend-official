@@ -39,6 +39,8 @@ database/docker_database/*
 database/mongo_database/*
 app/Backup
 
+data/
+
 
 .env.local
 .env.test
